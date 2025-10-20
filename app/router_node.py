@@ -19,6 +19,7 @@ def router_node(tools, assistant):
         },
     )
 
-    builder.add_edge("tools", END)
+    # Volta ao assistant após executar a ferramenta para que ele possa explicar
+    builder.add_edge("tools", "assistant")
 
     return builder.compile()

@@ -3,10 +3,15 @@ from langchain.tools import tool
 @tool("faq_tool")
 def faq_node(query: str) -> str:
     """
-    Tool simples de FAQ para responder perguntas fixas de exemplo.
+    Use esta ferramenta sempre que o usuário fizer uma pergunta sobre:
+    - Atualizar fatura ou boleto
+    - Cancelar assinatura
+    - Informações sobre suporte
+    
+    Esta ferramenta contém respostas oficiais do FAQ.
     """
     faqs = {
-        "fatura": "Você pode atualizar sua fatura acessando o portal do cliente e clicando em 'Reemitir boleto'.",
+        "atualizar minha fatura": "Você pode atualizar sua fatura acessando o portal do cliente e clicando em 'Reemitir boleto'.",
         "cancelar": "Para cancelar sua assinatura, vá em Configurações > Assinaturas > Cancelar.",
         "suporte": "Nosso suporte funciona de segunda a sexta, das 8h às 18h."
     }
