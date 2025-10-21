@@ -7,7 +7,7 @@ Um sistema inteligente de suporte ao cliente que usa **LangChain** e **LangGraph
 
 ## Arquitetura do projeto
 
-![alt text](image.png)
+![alt text](imgs/image.png)
 
 ### Estrutura do grafo
 
@@ -306,3 +306,64 @@ Conteúdo: Para atualizar sua fatura, siga estes passos...
 4. **assistant** recebe resultado e formata resposta final → `AIMessage`
 5. **Fluxo termina** (não há mais `tool_calls`)
 
+## Exemplo do Telegram
+
+```
+Mensagem 1:
+Tipo: HumanMessage
+Conteúdo: Quero abrir um ticket para resetar minha senha
+--------------------------------------------------
+
+Mensagem 2:
+Tipo: AIMessage
+Conteúdo: 
+Tool calls: [{'name': 'ticket_tool', 'args': {'query': 'Título: Reset de senha\nDescrição: O usuário está solicitando o reset de senha da conta.'}, 'id': 'fc_e3b91d34-9600-47ce-b41e-5e94035c26c3', 'type': 'tool_call'}]
+--------------------------------------------------
+
+Mensagem 3:
+Tipo: ToolMessage
+Conteúdo: Ticket aberto com sucesso! Mensagem enviada: Título: Reset de senha
+Descrição: O usuário está solicitando o reset de senha da conta.
+--------------------------------------------------
+
+Mensagem 4:
+Tipo: AIMessage
+Conteúdo: ✅ Seu ticket foi criado com sucesso!  
+**Título:** Reset de senha  
+**Descrição:** O usuário está solicitando o reset de senha da conta.  
+
+Um agente da equipe de suporte entrará em contato em breve. Se precisar de mais alguma coisa, é só falar!
+--------------------------------------------------
+Resposta final do assistente:
+✅ Seu ticket foi criado com sucesso!  
+**Título:** Reset de senha  
+**Descrição:** O usuário está solicitando o reset de senha da conta.  
+
+Um agente da equipe de suporte entrará em contato em breve. Se precisar de mais alguma coisa, é só falar!
+
+Mensagem 1:
+Tipo: HumanMessage
+Conteúdo: Preciso de auxilio para instalar python no meu computador
+--------------------------------------------------
+
+Mensagem 2:
+Tipo: AIMessage
+Conteúdo: 
+Tool calls: [{'name': 'ticket_tool', 'args': {'query': 'Título: Instalação do Python\nDescrição: O usuário precisa de ajuda para instalar Python no seu computador.'}, 'id': 'fc_2d68ceef-ab74-4b33-8705-8862238b81e7', 'type': 'tool_call'}]
+--------------------------------------------------
+
+Mensagem 3:
+Tipo: ToolMessage
+Conteúdo: Ticket aberto com sucesso! Mensagem enviada: Título: Instalação do Python
+Descrição: O usuário precisa de ajuda para instalar Python no seu computador.
+--------------------------------------------------
+
+Mensagem 4:
+Tipo: AIMessage
+Conteúdo: Ticket criado com sucesso! Um agente da equipe de suporte entrará em contato em breve para ajudar na instalação do Python. Se precisar de mais alguma coisa, é só avisar.
+--------------------------------------------------
+Resposta final do assistente:
+Ticket criado com sucesso! Um agente da equipe de suporte entrará em contato em breve para ajudar na instalação do Python. Se precisar de mais alguma coisa, é só avisar.
+```
+
+![alt text](imgs/image-1.png)
